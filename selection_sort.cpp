@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    // Las 7 listas del profesor
+    // Las 7 listas del profesor y una de ejemplo
     vector<vector<int>> pruebas = {
         {8, 3, 7, 4, 2, 9, 1, 6, 5},
 
@@ -14,7 +14,6 @@ int main()
         {9, 8, 7, 6, 5, 4, 3, 2, 1},
 
         {1, 2, 3, 5, 4, 6, 7, 8, 9},
-
 
         {
             847, 132, 596, 421, 73, 905, 268, 714, 359, 51,
@@ -55,18 +54,19 @@ int main()
             729, 174, 590, 335, 941, 126, 684, 256, 817, 369
         },
 
-        
+        // Lista de ejemplo del profesor
         {12, 3, 32, 8, 45, 20, 64}
-
     };
 
     int opcion;
+    int comparaciones = 0;
+    int intercambios = 0;
 
     cout << "ORDENAMIENTO POR SELECCION" << endl;
     cout << "Selecciona una lista del 1 al 8: ";
     cin >> opcion;
 
-    if (opcion < 1 || opcion > 8)
+    if (!cin || opcion < 1 || opcion > 8)
     {
         cout << "Opcion no valida" << endl;
         return 1;
@@ -92,6 +92,8 @@ int main()
         // Buscar el elemento menor
         for (int j = i + 1; j < n; j++)
         {
+            comparaciones++;
+
             if (numeros[j] < numeros[minimo])
             {
                 minimo = j;
@@ -104,6 +106,8 @@ int main()
             int auxiliar = numeros[i];
             numeros[i] = numeros[minimo];
             numeros[minimo] = auxiliar;
+
+            intercambios++;
         }
 
         // Mostrar cada pasada
@@ -125,6 +129,13 @@ int main()
     }
 
     cout << endl;
+
+    // Mostrar las estadisticas
+    cout << "\nComparaciones hechas: "
+         << comparaciones << endl;
+
+    cout << "Intercambios hechos: "
+         << intercambios << endl;
 
     return 0;
 }
